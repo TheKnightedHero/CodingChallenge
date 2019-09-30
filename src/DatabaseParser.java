@@ -26,26 +26,10 @@ public class DatabaseParser {
 				//increment the number of records we have received
 				numOfRecords++;
 				String[] inputValues = lineInput.split(csvSplitBy);
-				boolean missingColumn = false;
-
-				//check to see if the lineInput is valid
-				
-				/*
-				 * This for loop statement is checking for empty columns
-				 * If the line contains empty columns, we append it to bad data
-				 * This is under the assumption that empty columns are not allowed.
-				 * */				
-				for(String i:inputValues)
-				{
-					if(i.contentEquals(""))
-					{
-						missingColumn = true;
-					}
-				}
 
 				//check to see if number of columns match or if there is a missing column
 				//add to badRecords array if true
-				if(inputValues.length > 10 || missingColumn == true) 
+				if(inputValues.length > 10) 
 				{
 					numOfFailedRecords++;
 					badRecords.add(Arrays.asList(inputValues));
@@ -91,10 +75,8 @@ public class DatabaseParser {
 		{
 			FileWriter logWriter = new FileWriter("log.txt");
 			
-			logWriter.append("Records Received: " + numOfRecords);
-			logWriter.append("\n");
-			logWriter.append("Records Successful: " + numOfGoodRecords);
-			logWriter.append("\n");
+			logWriter.append("Records Received: " + numOfRecords + " \n");
+			logWriter.append("Records Successful: " + numOfGoodRecords + " \n");
 			logWriter.append("Records Failed: " + numOfFailedRecords);
 			
 			logWriter.flush();
