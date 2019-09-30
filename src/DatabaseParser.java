@@ -8,7 +8,7 @@ import java.util.*;
 public class DatabaseParser {
 
 	private List<List<String>> badRecords = new ArrayList<>();
-	//private String csvFile;
+	private File csvFile = new File("./src/codingChallengeRecords.csv");
 	private String csvSplitBy = ",";
 	private int numOfFailedRecords = 0;
 	private int numOfGoodRecords = 0;
@@ -17,9 +17,8 @@ public class DatabaseParser {
 	
 	public void readFromFile() 
 	{
-		BufferedReader br = new BufferedReader(new FileReader("./codingChallengeRecords.csv"));
-		
 		try {
+			BufferedReader br = new BufferedReader(new FileReader(csvFile));
 			String lineInput = br.readLine();
 			
 			while(lineInput != null) 
@@ -98,7 +97,9 @@ public class DatabaseParser {
 			logWriter.append("\n");
 			logWriter.append("Records Failed: " + numOfFailedRecords);
 			
+			logWriter.flush();
 			logWriter.close();
+			
 		}catch(Exception e) {
 			System.out.println("Failed to write log.txt");
 		}		
