@@ -23,6 +23,13 @@ public class DatabaseParser {
 		//call function to write 
 	}
 	
+	
+	/*
+	 * Notes on what to finish with this function:
+	 * - redo the try/catch block
+	 * - rename the csv file to be read from
+	 * - read each line into the 2D matrix, separated by the comma delimiter
+	 * */
 	public void readFromFile() {
 		BufferedReader br = new BufferedReader(new FileReader(pathToCSV));
 		try {
