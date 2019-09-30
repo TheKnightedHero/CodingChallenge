@@ -1,6 +1,8 @@
 /*
  	Author: Caleb Herring
 */
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 public class DatabaseParser {
 
@@ -22,7 +24,14 @@ public class DatabaseParser {
 	}
 	
 	public void readFromFile() {
-		
+		BufferedReader br = new BufferedReader(new FileReader(pathToCSV));
+		try {
+			String line;
+			while((line = br.readLine()) != null) {
+				//process line
+			}
+		} finally {
+		    br.close();		
+		}
 	}
-
 }
