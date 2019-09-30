@@ -1,9 +1,8 @@
 /*
  	Author: Caleb Herring
 */
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.FileReader;
+
+import java.io.*;
 import java.util.*;
 
 public class DatabaseParser {
@@ -15,15 +14,11 @@ public class DatabaseParser {
 	private int numOfGoodRecords = 0;
 	private int numOfRecords = 0;
 	
-	/*
-	 * Notes on what to finish with this function:
-	 * - redo the try/catch block
-	 * - rename the csv file to be read from
-	 * - read each line into the 2D matrix, separated by the comma delimiter
-	 * */
+	
 	public void readFromFile() 
 	{
 		BufferedReader br = new BufferedReader(new FileReader("./codingChallengeRecords.csv"));
+		
 		try {
 			String lineInput = br.readLine();
 			
@@ -60,38 +55,61 @@ public class DatabaseParser {
 				{
 					numOfGoodRecords++;
 				}
-				
-
-				
 			}
-				
-				badRecords.add(Arrays.asList(inputValues));
-		} finally {
-		    br.close();		
+			
+			br.close();
+		} catch(Exception e) {
+			System.out.println("Something happened when reading the CSV");
 		}
 	}
 	
-	
-	
-	
-	public void writeToFile() {
-		FileWriter csvWriter = new FileWriter("badEntires.csv");
-		FileWriter logWriter = new FileWriter("log.txt");
+	public void writeBadCsvToFile() 
+	{
+		try 
+		{
+			FileWriter csvWriter = new FileWriter("badEntries.csv");
+			
+			csvWriter.append("A,B,C,D,E,F,G,H,I,J");
+			csvWriter.append("\n");
+			
+			for(List<String> rowData:badRecords)
+			{
+				csvWriter.append(String.join(csvSplitBy, rowData));
+				csvWriter.append("\n");
+			}
+			
+			csvWriter.flush();
+			csvWriter.close();
+			
+		} catch(Exception e) {
+			System.out.println("Failed to write to badEntries.csv");
+		}
 	}
 	
+	public void writeLogToFile()
+	{
+		try 
+		{
+			FileWriter logWriter = new FileWriter("log.txt");
+			
+			logWriter.append("Records Received: " + numOfRecords);
+			logWriter.append("\n");
+			logWriter.append("Records Successful: " + numOfGoodRecords);
+			logWriter.append("\n");
+			logWriter.append("Records Failed: " + numOfFailedRecords);
+			
+			logWriter.close();
+		}catch(Exception e) {
+			System.out.println("Failed to write log.txt");
+		}		
+	}
 	
-	
-	
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
+		DatabaseParser Data = new DatabaseParser();
 		
-		//Create 2D vector
-		//Call read from file function that will enter data into vector
-		//call matrixScan to sort through good/bad data
-			//This function should also count:
-				//# of records received
-				//# of bad entries
-				//# of successful entries
-		//call function to write 
+		Data.readFromFile();
+		Data.writeBadCsvToFile();
+		Data.writeLogToFile();
 	}
 }
