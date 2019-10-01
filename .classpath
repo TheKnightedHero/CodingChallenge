@@ -2,5 +2,25 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/opencsv-4.6.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-beanutils-1.9.4-bin/commons-beanutils-1.9.4/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-beanutils-1.9.4-bin/commons-beanutils-1.9.4/commons-beanutils-1.9.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-beanutils-1.9.4-bin/commons-beanutils-1.9.4/commons-beanutils-1.9.4-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-beanutils-1.9.4-bin/commons-beanutils-1.9.4/commons-beanutils-1.9.4-tests.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-beanutils-1.9.4-bin/commons-beanutils-1.9.4/commons-beanutils-1.9.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-collections4-4.4-bin/commons-collections4-4.4/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-collections4-4.4-bin/commons-collections4-4.4/commons-collections4-4.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-collections4-4.4-bin/commons-collections4-4.4/commons-collections4-4.4-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-collections4-4.4-bin/commons-collections4-4.4/commons-collections4-4.4-tests.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-collections4-4.4-bin/commons-collections4-4.4/commons-collections4-4.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9-tests.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9-test-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-tests.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-test-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
