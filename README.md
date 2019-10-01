@@ -3,7 +3,7 @@
 Purpose of the Application:
 
 This project was built as a simple application, therefore it requires a java IDE to run it.
-Simply load the porject file and run the program through the IDE. 
+Simply load the project file and run the program through the IDE. 
 I used Eclipse as my IDE.
 You could probably run it through the command prompt, I just never have before.
 
