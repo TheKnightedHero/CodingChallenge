@@ -7,7 +7,7 @@ Simply load the project file and run the program through the IDE.
 I used Eclipse as my IDE.
 You could probably run it through the command prompt, I just never have before.
 
-Make sure the .jar files are added in propetires when loaded into the IDE. It should be already applied, but just in case. It will not function correctly without them.
+Make sure the .jar files are added in properties when loaded into the IDE. It should be already applied, but just in case. It will not function correctly without them.
 
 The application should: 
 
@@ -26,7 +26,7 @@ I did, however, try to keep to good coding practices as best as I could, such as
 
 I approached the project under the assumption that blank fields were acceptable, and just acting as indicators of missing data entires. This allowed me to focus on making sure the data given met the requirement that data outside the 10 column limit was considered bad data.
 
-I split the project into three objectives, which are shown through the three functions I wrote: 
+I split the project into four objectives, which are shown through the four functions I wrote: 
 1) Read from the .csv and store bad data
 2) Write bad data to a new.csv file
 3) Write good data to a new .csv file
