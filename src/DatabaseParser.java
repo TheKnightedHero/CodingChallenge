@@ -11,8 +11,8 @@ import com.opencsv.CSVWriter;
 public class DatabaseParser {
 
 	private List<List<String>> badRecords = new ArrayList<>();
+	private List<List<String>> goodRecords = new ArrayList<>();
 	private File csvFile = new File("./src/codingChallengeRecords.csv");
-	//private String csvSplitBy = ",";
 	private int numOfFailedRecords = 0;
 	private int numOfGoodRecords = 0;
 	private int numOfRecords = 0;
@@ -21,17 +21,15 @@ public class DatabaseParser {
 	public void readFromFile() 
 	{
 		try {
-			//BufferedReader br = new BufferedReader(new FileReader(csvFile));
 			CSVReader reader = new CSVReader(new FileReader(csvFile));
 			String[] lineInput = reader.readNext();
 			
 			while(lineInput != null) 
 			{
 				//increment the number of records we have received
-				numOfRecords++;
-				//String[] inputValues = lineInput.split(csvSplitBy);			
+				numOfRecords++;			
 
-				//check to see if number of columns match or if there is an empty column column
+				//check to see if number of columns match
 				//add to badRecords array if true
 				if(lineInput.length > 10) 
 				{
@@ -41,6 +39,7 @@ public class DatabaseParser {
 				else
 				{
 					numOfGoodRecords++;
+					goodRecords.add(Arrays.asList(lineInput));
 				}
 				lineInput = reader.readNext();
 			}
@@ -50,6 +49,7 @@ public class DatabaseParser {
 			numOfRecords--;
 			
 			reader.close();
+			
 		} catch(Exception e) {
 			System.out.println("Something happened when reading the CSV");
 		}
@@ -61,16 +61,12 @@ public class DatabaseParser {
 		{
 			CSVWriter csvWriter = new CSVWriter(new FileWriter("badEntries.csv"));
 			
+			//Add column headers to bad.csv file
 			String[] header = ("A,B,C,D,E,F,G,H,I,J").split(",");
 			csvWriter.writeNext(header);
-			//csvWrite.append("A,B,C,D,E,F,G,H,I,J");
-			//csvWriter.append("\n");
 			
 			for(List<String> rowData:badRecords)
 			{
-				//csvWriter.append(String.join(csvSplitBy, rowData));
-				//csvWriter.append("\n");
-				
 				csvWriter.writeNext((String[]) rowData.toArray());
 			}
 			
@@ -79,6 +75,25 @@ public class DatabaseParser {
 			
 		} catch(Exception e) {
 			System.out.println("Failed to write to badEntries.csv");
+		}
+	}
+	
+	public void writeGoodCsvToFile() 
+	{
+		try 
+		{
+			CSVWriter csvWriter = new CSVWriter(new FileWriter("goodEntries.csv"));
+			
+			for(List<String> rowData:goodRecords)
+			{
+				csvWriter.writeNext((String[]) rowData.toArray());
+			}
+			
+			csvWriter.flush();
+			csvWriter.close();
+			
+		} catch(Exception e) {
+			System.out.println("Failed to write to goodEntries.csv");
 		}
 	}
 	
@@ -105,6 +120,7 @@ public class DatabaseParser {
 		DatabaseParser Data = new DatabaseParser();
 		
 		Data.readFromFile();
+		Data.writeGoodCsvToFile();
 		Data.writeBadCsvToFile();
 		Data.writeLogToFile();
 	}
