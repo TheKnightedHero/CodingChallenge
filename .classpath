@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-sources.jar"/>
 	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-tests.jar"/>
 	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/commons-text-1.8-bin/commons-text-1.8/commons-text-1.8-test-sources.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/GitHub/CodingChallenge/sqlite-jdbc-3.27.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

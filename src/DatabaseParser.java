@@ -152,7 +152,7 @@ public class DatabaseParser {
 		DatabaseParser Data = new DatabaseParser();
 		
 		Data.readFromFile();
-		Data.writeGoodCsvToFile();
+		//Data.writeGoodCsvToFile();
 		Data.writeBadCsvToFile();
 		Data.writeLogToFile();
 	}
