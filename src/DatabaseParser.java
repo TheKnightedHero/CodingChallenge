@@ -129,7 +129,7 @@ public class DatabaseParser {
 		
 		Connection conn = null;
 		
-		String sql ="INSERT INTO csvData(A,B,C,D,E,F,G,H,I,J) VALUES";
+		String sql ="INSERT INTO csvData(A,B,C,D,E,F,G,H,I,J) VALUES ";
 	}
 	
 	public void writeBadCsvToFile() 
