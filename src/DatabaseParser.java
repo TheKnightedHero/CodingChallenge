@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
@@ -27,7 +29,8 @@ public class DatabaseParser {
 	{
 		 
         //String url = "jdbc:sqlite:C:/sqlite/db/" + fileName;
-		String url = "jdbc:sqlite:./CodingChallenge/sqlite/db/" + fileName;
+		//String url = "jdbc:sqlite:D:/Programs/GitHub/CodingChallenge/Database/" + fileName;
+		String url = "jdbc:sqlite:validEntries.db";
  
         try (Connection conn = DriverManager.getConnection(url)) 
         {
@@ -36,6 +39,7 @@ public class DatabaseParser {
                 DatabaseMetaData meta = conn.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
                 System.out.println("A new database has been created.");
+                conn.close();
             }
  
         } catch (SQLException e) 
@@ -44,6 +48,41 @@ public class DatabaseParser {
         }
     }
 	
+	public static void createNewTable() 
+	{
+		String url = "jdbc:sqlite:validEntries.db";
+		
+		Connection conn = null;
+		
+		String sql = "CREATE TABLE IF NOT EXISTS csvData("
+				+ "A TEXT PRIMARY KEY"
+				+ "B TEXT"
+				+ "C TEXT"
+				+ "D TEXT"
+				+ "E TEXT"
+				+ "F TEXT"
+				+ "G TEXT"
+				+ "H TEXT"
+				+ "I TEXT"
+				+ "J TEXT"
+				+ ");";
+		
+		try
+		{
+			conn = DriverManager.getConnection(url);
+			Statement stmt = conn.createStatement();
+			
+			
+			if(conn != null)
+			{
+				stmt.execute(sql);
+				conn.close();
+			}
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	
 	public void readFromFile() 
@@ -55,7 +94,8 @@ public class DatabaseParser {
 			while(lineInput != null) 
 			{
 				//increment the number of records we have received
-				numOfRecords++;			
+				numOfRecords++;
+				
 
 				//check to see if number of columns match
 				//add to badRecords array if true
@@ -81,6 +121,15 @@ public class DatabaseParser {
 		} catch(Exception e) {
 			System.out.println("Something happened when reading the CSV");
 		}
+	}
+	
+	public void writeToDatabase()
+	{
+		String url = "jdbc:sqlite:validEntries.db";
+		
+		Connection conn = null;
+		
+		String sql ="INSERT INTO csvData(A,B,C,D,E,F,G,H,I,J) VALUES";
 	}
 	
 	public void writeBadCsvToFile() 
@@ -148,6 +197,7 @@ public class DatabaseParser {
 	public static void main(String[] args) 
 	{
 		createNewDatabase("validEntries.db");
+		createNewTable();
 		
 		DatabaseParser Data = new DatabaseParser();
 		
@@ -155,5 +205,7 @@ public class DatabaseParser {
 		//Data.writeGoodCsvToFile();
 		Data.writeBadCsvToFile();
 		Data.writeLogToFile();
+		
+		
 	}
 }
