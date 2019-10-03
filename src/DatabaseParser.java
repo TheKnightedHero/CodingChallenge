@@ -4,7 +4,10 @@
 
 import java.io.*;
 import java.util.*;
-
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
@@ -16,6 +19,31 @@ public class DatabaseParser {
 	private int numOfFailedRecords = 0;
 	private int numOfGoodRecords = 0;
 	private int numOfRecords = 0;
+	
+	
+	
+	
+	public static void createNewDatabase(String fileName) 
+	{
+		 
+        //String url = "jdbc:sqlite:C:/sqlite/db/" + fileName;
+		String url = "jdbc:sqlite:./CodingChallenge/sqlite/db/" + fileName;
+ 
+        try (Connection conn = DriverManager.getConnection(url)) 
+        {
+            if (conn != null) 
+            {
+                DatabaseMetaData meta = conn.getMetaData();
+                System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+ 
+        } catch (SQLException e) 
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+	
 	
 	
 	public void readFromFile() 
@@ -78,6 +106,7 @@ public class DatabaseParser {
 		}
 	}
 	
+	/*
 	public void writeGoodCsvToFile() 
 	{
 		try 
@@ -96,6 +125,7 @@ public class DatabaseParser {
 			System.out.println("Failed to write to goodEntries.csv");
 		}
 	}
+	*/
 	
 	public void writeLogToFile()
 	{
@@ -117,6 +147,8 @@ public class DatabaseParser {
 	
 	public static void main(String[] args) 
 	{
+		createNewDatabase("validEntries.db");
+		
 		DatabaseParser Data = new DatabaseParser();
 		
 		Data.readFromFile();
