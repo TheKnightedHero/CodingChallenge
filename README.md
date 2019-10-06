@@ -15,8 +15,11 @@ Take the given .csv file renamed codingChallengeRecords.csv
 parse the data
 sort the data between Valid entries and Invalid entires.
 Write the bad data into a new .csv file
-Write the good data into a new .csv file, posing as the "database"
+(See addendum) Write the good data into a new .csv file, posing as the "database"  
 write a log.txt file listing how many records were recorded, how many were Valid, and how many were Invalid
+
+# Addendum
+I recently made another attempt at this coding challenge after receiving feedback from the first submission. I did attempt to create and write to a database, despite having no previous experience doing so in Java. I manage to create a database and managed to create a table within the database itself. I, however, have not figured out the issue in regards to inserting data. I know I am very close. It has something to do when inserting data, it claims column A does not exist. I've ran the program through the debugger a few more times since then, getting the same repeated error. I was able to create the table itself without errors, however, so I am a bit lost as to what is really going on. I attempted to make each column name a string literal, in case the letter 'A' was a keyword, but that did not solve my issue. You can till have access to the good entries, one just simply needs to uncomment the call in the main function.
 
 -------------------
 # Design Choice
