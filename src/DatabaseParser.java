@@ -47,9 +47,10 @@ public class DatabaseParser {
 
 		Connection conn = null;
 
-		String sql = "CREATE TABLE IF NOT EXISTS csvData(" + "A TEXT PRIMARY KEY," + "B TEXT," + "C TEXT," + "D TEXT,"
-				+ "E TEXT," + "F TEXT," + "G TEXT," + "H TEXT," + "I TEXT," + "J TEXT" + ");";
+		String sql = "CREATE TABLE IF NOT EXISTS csvData(" + "'A' TEXT PRIMARY KEY," + "'B' TEXT," + "'C' TEXT," + "'D' TEXT,"
+				+ "'E' TEXT," + "'F' TEXT," + "'G' TEXT," + "'H' TEXT," + "'I' TEXT," + "'J' TEXT" + ");";
 
+		//String sql = "DROP TABLE IF EXISTS csvData;";
 		try {
 			conn = DriverManager.getConnection(url);
 			Statement stmt = conn.createStatement();
@@ -122,7 +123,7 @@ public class DatabaseParser {
 																					+ rowData.get(6) + ","
 																					+ rowData.get(7) + ","
 																					+ rowData.get(8) + ","
-																					+ rowData.get(9) + ")";
+																					+ rowData.get(9) + ");";
 
 					stmt.addBatch(sql);
 					stmt.executeBatch();
@@ -160,18 +161,18 @@ public class DatabaseParser {
 		}
 	}
 
-	/*
-	 * public void writeGoodCsvToFile() { try { CSVWriter csvWriter = new
-	 * CSVWriter(new FileWriter("goodEntries.csv"));
-	 * 
-	 * for(List<String> rowData:goodRecords) { csvWriter.writeNext((String[])
-	 * rowData.toArray()); }
-	 * 
-	 * csvWriter.flush(); csvWriter.close();
-	 * 
-	 * } catch(Exception e) {
-	 * System.out.println("Failed to write to goodEntries.csv"); } }
-	 */
+	
+	  public void writeGoodCsvToFile() { try { CSVWriter csvWriter = new
+	  CSVWriter(new FileWriter("goodEntries.csv"));
+	  
+	 for(List<String> rowData:goodRecords) { csvWriter.writeNext((String[])
+	  rowData.toArray()); }
+	  
+	  csvWriter.flush(); csvWriter.close();
+	 
+	  } catch(Exception e) {
+	  System.out.println("Failed to write to goodEntries.csv"); } }
+	 
 
 	public void writeLogToFile() {
 		try {
