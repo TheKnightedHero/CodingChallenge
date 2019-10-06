@@ -47,8 +47,8 @@ public class DatabaseParser {
 
 		Connection conn = null;
 
-		String sql = "CREATE TABLE IF NOT EXISTS csvData(" + "A TEXT PRIMARY KEY" + "B TEXT" + "C TEXT" + "D TEXT"
-				+ "E TEXT" + "F TEXT" + "G TEXT" + "H TEXT" + "I TEXT" + "J TEXT" + ");";
+		String sql = "CREATE TABLE IF NOT EXISTS csvData(" + "A TEXT PRIMARY KEY," + "B TEXT," + "C TEXT," + "D TEXT,"
+				+ "E TEXT," + "F TEXT," + "G TEXT," + "H TEXT," + "I TEXT," + "J TEXT" + ");";
 
 		try {
 			conn = DriverManager.getConnection(url);
@@ -92,7 +92,7 @@ public class DatabaseParser {
 			reader.close();
 
 		} catch (Exception e) {
-			System.out.println("Something happened when reading the CSV");
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -101,6 +101,7 @@ public class DatabaseParser {
 		String url = "jdbc:sqlite:validEntries.db";
 		
 		Connection conn = null;
+
 		
 		try 
 		{
@@ -121,16 +122,21 @@ public class DatabaseParser {
 																					+ rowData.get(6) + ","
 																					+ rowData.get(7) + ","
 																					+ rowData.get(8) + ","
-																					+ rowData.get(9) + "," 
-																					+ ")";
+																					+ rowData.get(9) + ")";
 
-					stmt.executeUpdate(sql);
+					stmt.addBatch(sql);
+					stmt.executeBatch();
+
+					
 				}
+				stmt.executeBatch();  //Executes the rest of the batch statement
+				stmt.close();
 				conn.close();
 			}	
 		}catch (Exception e) 
 		{
 			System.out.println(e.getMessage());
+			System.out.println("Error happened during INSERT");
 		}
 	}
 
@@ -150,7 +156,7 @@ public class DatabaseParser {
 			csvWriter.close();
 
 		} catch (Exception e) {
-			System.out.println("Failed to write to badEntries.csv");
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -179,7 +185,7 @@ public class DatabaseParser {
 			logWriter.close();
 
 		} catch (Exception e) {
-			System.out.println("Failed to write log.txt");
+			System.out.println(e.getMessage());
 		}
 	}
 
